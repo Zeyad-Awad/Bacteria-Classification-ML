@@ -74,7 +74,7 @@ def download_fasta(ids, subdir):
     print('Writing script ...')
     with open('script.sh', 'w') as f:
         f.write(f'cd {subdir}\n')
-        f.write('rm -r *\n')
+        f.write('rm -r \n')
         for id in ids:
             f.write(f'curl -OJX GET "https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/{id}/download?include_annotation_type=GENOME_FASTA&filename={id}.zip" -H "Accept: application/zip"\n')
         f.write('echo "Extracting and cleaning ... "\n')
@@ -86,7 +86,6 @@ def download_fasta(ids, subdir):
     os.system('chmod 777 script.sh')
     os.system('./script.sh')
     print('Cleaning ...')
-    os.system('rm script.sh')
     print('Success!')
 
 def generate_accession_ids(subdir):
