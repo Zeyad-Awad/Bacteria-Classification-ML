@@ -75,6 +75,8 @@ def download_fasta(ids, subdir):
     with open('script.sh', 'w') as f:
         f.write(f'cd {subdir}\n')
         f.write('rm -r \n')
+        if isinstance(ids, str):  # If ids is a single string, convert it to a list
+            ids = [ids]
         for id in ids:
             f.write(f'curl -OJX GET "https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/{id}/download?include_annotation_type=GENOME_FASTA&filename={id}.zip" -H "Accept: application/zip"\n')
         f.write('echo "Extracting and cleaning ... "\n')
@@ -97,6 +99,6 @@ def generate_accession_ids(subdir):
                 if line.startswith('Accession'):
                     continue
                 ids.append(line.split(',')[0])
-                labels.append(line.split(',')[1].split(' ')[0])
+                labels.append(line.split(';s__')[1].split(' ')[0])
 
     return ids, labels
