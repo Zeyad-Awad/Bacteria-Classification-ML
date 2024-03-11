@@ -2,6 +2,7 @@ import numpy as np
 #from sklearn.metrics import pairwise_distances;
 from sklearn.manifold import MDS
 import pandas as pd
+import matplotlib.pyplot as plt
 import os
 
 
@@ -102,3 +103,21 @@ def generate_accession_ids(subdir):
                 labels.append(line.split(';s__')[1].split(' ')[0])
 
     return ids, labels
+
+def plot_3d(reduced_data, clusters):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    for cluster_label in np.unique(clusters):
+        idxs = np.where(np.array(clusters) == cluster_label)[0]
+
+        ax.scatter(reduced_data[idxs, 0], reduced_data[idxs, 1], reduced_data[idxs, 2],\
+                   label=cluster_label, alpha=0.3)
+    ax.set_xlabel('PCo1')
+    ax.set_ylabel('PCo2')
+    ax.set_zlabel('PCo3')
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_zticks([])
+    ax.set_title('Bacteria')
+    ax.legend()
+    plt.show()
