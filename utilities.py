@@ -112,7 +112,7 @@ def plot_3d(reduced_data, clusters):
         idxs = np.where(np.array(clusters) == cluster_label)[0]
 
         ax.scatter(reduced_data[idxs, 0], reduced_data[idxs, 1], reduced_data[idxs, 2],\
-                   label=cluster_label, s=45)
+                   label=cluster_label, s=60)
     ax.set_xlabel('PCo1')
     ax.set_ylabel('PCo2')
     ax.set_zlabel('PCo3')
