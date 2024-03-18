@@ -38,8 +38,8 @@ def write_fastas(sequences, subdir, dir, header=''):
     for i in range(len(sequences)):
         with open(f'{path_to_dir}/{subdir}_{i+1}.fasta', 'w') as f:
             f.write(f'>{header}\n')
-            for j in range(0, len(sequences[i]), 60):
-                f.write(f'{sequences[i][j:j+60]}\n')
+            for j in range(0, len(sequences[i]), 80):
+                f.write(f'{sequences[i][j:j+80]}\n')
               
 
 def read_sequence(file_path) -> str:
