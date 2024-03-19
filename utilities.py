@@ -110,9 +110,8 @@ def plot_3d(reduced_data, clusters):
     ax = fig.add_subplot(111, projection='3d')
     for cluster_label in np.unique(clusters):
         idxs = np.where(np.array(clusters) == cluster_label)[0]
-
         ax.scatter(reduced_data[idxs, 0], reduced_data[idxs, 1], reduced_data[idxs, 2],\
-                   label=cluster_label, s=60)
+                   label=cluster_label, s=15)
     ax.set_xlabel('PCo1')
     ax.set_ylabel('PCo2')
     ax.set_zlabel('PCo3')
@@ -131,3 +130,7 @@ def get_ids_and_labels(infile):
             labels.append(line.split(',')[0].strip())
             ids.append(line.split(',')[1].strip())
     return ids, labels
+
+def reverse_complement(seq:str):
+    dct = {'A': 'T', 'T': 'A', 'G': 'C', 'C': 'G'}
+    return ''.join(dct[comp_letter] for comp_letter in reversed(seq))
