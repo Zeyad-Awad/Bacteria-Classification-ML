@@ -1,0 +1,12 @@
+#!/bin/bash
+curl -OJX GET "https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/GCF_001653455.1/download?include_annotation_type=GENOME_FASTA&filename=GCF_001653455.1.zip" -H "Accept: application/zip"
+curl -OJX GET "https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/GCF_003636935.1/download?include_annotation_type=GENOME_FASTA&filename=GCF_003636935.1.zip" -H "Accept: application/zip"
+curl -OJX GET "https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/GCF_009689985.1/download?include_annotation_type=GENOME_FASTA&filename=GCF_009689985.1.zip" -H "Accept: application/zip"
+curl -OJX GET "https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/GCF_003637665.1/download?include_annotation_type=GENOME_FASTA&filename=GCF_003637665.1.zip" -H "Accept: application/zip"
+curl -OJX GET "https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/GCF_003637685.1/download?include_annotation_type=GENOME_FASTA&filename=GCF_003637685.1.zip" -H "Accept: application/zip"
+curl -OJX GET "https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/GCF_001653475.1/download?include_annotation_type=GENOME_FASTA&filename=GCF_001653475.1.zip" -H "Accept: application/zip"
+curl -OJX GET "https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/GCF_000448485.1/download?include_annotation_type=GENOME_FASTA&filename=GCF_000448485.1.zip" -H "Accept: application/zip"
+curl -OJX GET "https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/GCF_000476275.1/download?include_annotation_type=GENOME_FASTA&filename=GCF_000476275.1.zip" -H "Accept: application/zip"
+curl -OJX GET "https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/GCF_000277405.1/download?include_annotation_type=GENOME_FASTA&filename=GCF_000277405.1.zip" -H "Accept: application/zip"
+curl -OJX GET "https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/GCF_900120335.1/download?include_annotation_type=GENOME_FASTA&filename=GCF_900120335.1.zip" -H "Accept: application/zip"
+curl -OJX GET "https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/GCF_900478295.1/download?include_annotation_type=GENOME_FASTA&filename=GCF_900478295.1.zip" -H "Accept: application/zip"

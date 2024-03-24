@@ -38,8 +38,8 @@ def write_fastas(sequences, subdir, dir, header=''):
     for i in range(len(sequences)):
         with open(f'{path_to_dir}/{subdir}_{i+1}.fasta', 'w') as f:
             f.write(f'>{header}\n')
-            for j in range(0, len(sequences[i]), 60):
-                f.write(f'{sequences[i][j:j+60]}\n')
+            for j in range(0, len(sequences[i]), 80):
+                f.write(f'{sequences[i][j:j+80]}\n')
               
 
 def read_sequence(file_path) -> str:
@@ -65,10 +65,11 @@ def cgr(seq, order, k) -> np.ndarray:
     return np.array(out)
 
 def perform_mds(diatances_matrix, n=3, random_state=99) -> np.ndarray:
-    mds = MDS(n_components=n, dissimilarity='precomputed', random_state=random_state)
+    mds = MDS(n_components=n, dissimilarity='precomputed', random_state=random_state, normalized_stress='auto')
     embeddings = mds.fit_transform(diatances_matrix)
     return embeddings
 
+# takes list of ids, places them in a subdir
 def download_fasta(ids, subdir):
     if not os.path.exists(subdir):
         os.makedirs(subdir)
@@ -105,13 +106,12 @@ def generate_accession_ids(subdir):
     return ids, labels
 
 def plot_3d(reduced_data, clusters):
-    fig = plt.figure()
+    fig = plt.figure(figsize=(9,4))
     ax = fig.add_subplot(111, projection='3d')
     for cluster_label in np.unique(clusters):
         idxs = np.where(np.array(clusters) == cluster_label)[0]
-
         ax.scatter(reduced_data[idxs, 0], reduced_data[idxs, 1], reduced_data[idxs, 2],\
-                   label=cluster_label, alpha=0.3)
+                   label=cluster_label, s=15)
     ax.set_xlabel('PCo1')
     ax.set_ylabel('PCo2')
     ax.set_zlabel('PCo3')
@@ -119,5 +119,18 @@ def plot_3d(reduced_data, clusters):
     ax.set_yticks([])
     ax.set_zticks([])
     ax.set_title('Bacteria')
-    ax.legend()
+    plt.legend(loc='best', bbox_to_anchor=(1, 1))
     plt.show()
+
+def get_ids_and_labels(infile):
+    labels = []
+    ids = []
+    with open(infile, 'r') as f:
+        for line in f:
+            labels.append(line.split(',')[0].strip())
+            ids.append(line.split(',')[1].strip())
+    return ids, labels
+
+def reverse_complement(seq:str):
+    dct = {'A': 'T', 'T': 'A', 'G': 'C', 'C': 'G'}
+    return ''.join(dct[comp_letter] for comp_letter in reversed(seq))

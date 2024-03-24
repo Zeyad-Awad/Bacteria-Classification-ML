@@ -1,0 +1,10 @@
+lactobacillus iners
+lactobacillus crispatus
+lactobacillus gasseri
+lactobacillus jensenii
+Bifidobacterium animalis
+Bifidobacterium breve
+Bifidobacterium longum
+Limosilactobacillus reuteri
+Bacteroides fragilis
+Enterococcus faecalis
