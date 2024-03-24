@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.manifold import MDS
 import pandas as pd
 import matplotlib.pyplot as plt
+import cv2
 import os
 
 
@@ -134,3 +135,7 @@ def get_ids_and_labels(infile):
 def reverse_complement(seq:str):
     dct = {'A': 'T', 'T': 'A', 'G': 'C', 'C': 'G'}
     return ''.join(dct[comp_letter] for comp_letter in reversed(seq))
+
+def read_cgr_plot(path):
+    cgr_plot = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
+    return cgr_plot
