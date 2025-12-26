@@ -1,0 +1,21 @@
+# System files
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Virtual Environments
+venv/
+env/
+.env/
+
+# Generated Script
+script.sh
+
+# Temporary download files
+*.zip
+extracted.txt
